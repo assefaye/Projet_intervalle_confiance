@@ -1,0 +1,34 @@
+####Voici comment vous pouvez effectuer ce calcul dans R pour estimer le pourcentage de la population d'une ville qui écoute une émission de radio :
+# Paramètres
+n <- 650                      # Taille de l'échantillon
+x <- 163                      # Nombre de personnes écoutant l'émission
+
+# Calcul de la proportion
+p_hat <- x / n                # Proportion d'écoute
+
+# Calcul de l'erreur standard
+E <- sqrt(p_hat * (1 - p_hat) / n)
+
+# Valeur critique pour un niveau de confiance de 95 %
+z_value <- qnorm(0.975)      # 0.975 pour un intervalle de confiance de 95 %
+
+# Calcul de l'intervalle de confiance
+lower_bound <- p_hat - z_value * E
+upper_bound <- p_hat + z_value * E
+
+# Résultat final en pourcentage
+lower_bound_percentage <- lower_bound * 100
+upper_bound_percentage <- upper_bound * 100
+
+# Affichage des résultats
+cat("L'intervalle de confiance à 95 % pour le pourcentage de la population qui écoute l'émission est : (",
+    round(lower_bound_percentage, 2), "%, ", round(upper_bound_percentage, 2), "%)\n")
+
+######################### Explication du code : #################################################
+Paramètres : Définissez la taille de l'échantillon (n) et le nombre d'écoutes (x).
+Proportion d'écoute : Calculez la proportion d'écoute (p̂).
+Erreur standard : Calculez l'erreur standard de la proportion.
+Valeur critique : Utilisez qnorm() pour obtenir la valeur z pour le niveau de confiance de 95 %.
+Intervalle de confiance : Calculez les bornes inférieure et supérieure.
+Affichage : Utilisez cat() pour afficher l'intervalle de confiance en pourcentage.
+Exécutez ce code dans R, et il vous donnera l'intervalle de confiance pour le pourcentage de la population qui écoute l'émission de radio.
